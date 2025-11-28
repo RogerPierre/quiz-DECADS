@@ -1,15 +1,40 @@
-import { MainTitle } from "./header/MainTitle";
-import { SubTitles } from "./header/subTitle";
 
 
 
-interface IInputHeader{
+
+
+interface IInputSubTitle{
+    label:string
+}
+export const SubTitles=({label}:IInputSubTitle)=>{
+    return  (
+        <div>
+            <h3>{label}</h3>
+        </div>
+    )
+}
+
+interface IInputTitle{
+    label:string
+}
+
+export const MainTitle=({label}:IInputTitle)=>{
+    return (
+        <div>
+            <h1 > {label}</h1>
+        </div>
+    )
+}
+
+
+interface IInputHeaderMOD{
     labelTitle:string
     labelSubTitle:string
 }
-export const Header=({labelTitle,labelSubTitle}:IInputHeader)=>{
+export const HeaderMOD=({labelTitle,labelSubTitle}:IInputHeaderMOD)=>{
     return(
-        <div><MainTitle
+        <div>
+        <MainTitle
         label={labelTitle}
         />
 

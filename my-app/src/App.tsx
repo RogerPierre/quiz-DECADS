@@ -1,13 +1,22 @@
 import { useState } from 'react'
-import { Header } from './componentes/Header'
+import {  HeaderMOD } from './componentes/Header'
+import { ListAlternativas } from './componentes/alternativas'
+import { dados } from './dados'
 export const App = ()=>{
-  useState()
+  const [turn,setTurn]=useState(1)
+
   return (
     <div>
       
-       <Header
+       <HeaderMOD
        labelTitle='DECADS'
-       labelSubTitle='Desvendando Coders'></Header>
+       labelSubTitle='Desvendando Coders' />
+           <ListAlternativas
+           Data={dados}
+           turn={turn}
+           list={[0,1,2,3]}
+           onClick={()=>setTurn(turn+1)}
+            />
     </div>
   )
 }
