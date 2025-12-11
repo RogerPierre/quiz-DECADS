@@ -1,0 +1,117 @@
+
+  body {
+  background-color: black;
+  color: #00ff00;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+
+  /* Centraliza conteúdo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh; /* ocupa a tela inteira */
+  text-align: center;
+
+}
+
+h1 , h2{
+  font-size: 60px;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
+}
+
+.quiz-text {
+  max-width: 600px; /* ou a largura que quiser */
+  margin: 0 auto;   /* centraliza horizontalmente */
+  font-size: 16px;  /* exemplo de tamanho */
+  /* outras propriedades que quiser aplicar */
+}
+.matrix-effect{
+  background:none;
+  color: #00ff00;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  cursor: pointer;
+  text-shadow: 5px 5px 20px #00ff00;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  margin: 10px 0; /* espaçamento entre os botões */
+}
+#sub-titulo{
+  font-size:32px;
+}
+button,#barra-pesquisa {
+  background:none;
+  color: #00ff00;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  cursor: pointer;
+  text-shadow: 5px 5px 5px #00ff00;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  margin: 10px 0; /* espaçamento entre os botões */
+}
+
+button:hover {
+  background-color:#00ff00;
+  box-shadow: 0 0 10px black, 0 0 20px #00ff00;
+  transform: scale(1.05);
+  color: black;
+}
+#typewriter-container {
+  background: none;
+  text-align: left;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+
+}#barra-pesquisa {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #00ff00;
+  outline: none;
+}
+
+#barra-pesquisa:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+#typewriter-container {
+  text-align: left;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px;
+}
+/* Estilo para o vídeo de fundo */
+#bg-video {
+  position: fixed;
+  top: 0;   /* garante que o topo fique no topo da tela */
+  left: 0;  /* garante que a esquerda fique na esquerda da tela */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 32%;
+  background-color: black;
+}
+
+
+/* Conteúdo por cima do vídeo */
+.conteudo {
+  position: relative;
+  z-index: 1;
+  color: black;
+  text-align: center;
+  padding-top: 20%;
+}
