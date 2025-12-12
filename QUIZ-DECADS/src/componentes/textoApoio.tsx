@@ -2,15 +2,12 @@
 
 
 interface IInputparagrafro{
-    label:string
+    label?:string
     className:string
 }
-export const ParagrafroTEXTO = ({label , className}:IInputparagrafro) => {
+export const ParagrafroTEXTO = ({ className}:IInputparagrafro) => {
     return(
-        <>
-            <p className={className}>
-                {label}
-            </p>
-        </>
+        <div id={className}>
+        </div>
     )
 }
