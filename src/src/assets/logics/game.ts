@@ -1,172 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <title>Quiz Interativo</title>
-  <style>
-  body {
-  background-color: black;
-  color: #00ff00;
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
 
-  /* Centraliza conteúdo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+type Perfil = {
+  "Carimbo de data/hora": string;
+  "Nome completo:": string;
+  "Data de nascimento:": string;
+  "Idade:": number;
+  "Qual cidade nasceu?": string;
+  "Meu apelido é:": string;
+  "Tenho a mania de :": string;
+  "Cor do seu cabelo:": string;
+  "Estilo de musica favorita:": string;
+  "Eu sempre falo isso:": string;
+  "Um talento oculto:": string;
+  "Animal favorito:": string;
+  "Tem irmãos?": string;
+  "Chega atrasado(a)?": string;
+  "Adicione uma foto sua que mais gosta:": string;
+  "Pra quem não conseguiu por a tada de nascimento na questão acima.": string;
+};
 
-  min-height: 100vh; /* ocupa a tela inteira */
-  text-align: center;
-
-}
-
-h1 {
-  font-size: 60px;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00;
-}
-
-.quiz-text {
-  max-width: 600px; /* ou a largura que quiser */
-  margin: 0 auto;   /* centraliza horizontalmente */
-  font-size: 16px;  /* exemplo de tamanho */
-  /* outras propriedades que quiser aplicar */
-}
-.matrix-effect{
-  background:none;
-  color: #00ff00;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 48px;
-  cursor: pointer;
-  text-shadow: 5px 5px 20px #00ff00;
-  transition: all 0.3s ease;
-  min-width: 150px;
-  margin: 10px 0; /* espaçamento entre os botões */
-}
-#sub-titulo{
-  font-size:32px;
-}
-button,#barra-pesquisa {
-  background:none;
-  color: #00ff00;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 24px;
-  cursor: pointer;
-  text-shadow: 5px 5px 5px #00ff00;
-  transition: all 0.3s ease;
-  min-width: 150px;
-  margin: 10px 0; /* espaçamento entre os botões */
-}
-
-button:hover {
-  background-color:#00ff00;
-  box-shadow: 0 0 10px black, 0 0 20px #00ff00;
-  transform: scale(1.05);
-  color: black;
-}
-#typewriter-container {
-  background: none;
-  text-align: left;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-
-}#barra-pesquisa {
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #00ff00;
-  outline: none;
-}
-
-#barra-pesquisa:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-}
-
-#typewriter-container {
-  text-align: left;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-top: 20px;
-}
-/* Estilo para o vídeo de fundo */
-#bg-video {
-  position: fixed;
-  top: 0;   /* garante que o topo fique no topo da tela */
-  left: 0;  /* garante que a esquerda fique na esquerda da tela */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 32%;
-  background-color: black;
-}
-
-
-/* Conteúdo por cima do vídeo */
-.conteudo {
-  position: relative;
-  z-index: 1;
-  color: black;
-  text-align: center;
-  padding-top: 20%;
-}
-</style>
-</head>
-<body>
-
-
-  <main class="tela-inicial">
-    <h1 class="matrix-effect"id="titulo-principal">DECADS</h1>
-    <h2 class="matrix-effect"id="sub-titulo">Desvendando os coders</h2>
-<div class="fundo-preto">
-<video autoplay muted loop id="bg-video">
-  <source src="./video-fundo.mp4" type="video/mp4">
-  Seu navegador não suporta vídeo HTML5.
-</video>
-</div>
-
-
-    <div class="matrix-effect" class="button-container">
-      <button id="primeira-opcao">
-        Iniciar
-      </button>
-      <button id="segunda-opcao">
-        Instruções
-      </button>
-      <button  id="terceira-opcao">
-        Créditos
-      </button>
-      <button  id="quarta-opcao">
-          Pesquisar
-      </button>
-    </div><div >
-    <p   id="marcador-de-pontuação"></p>
-  </div>
-</main>
-
-
-
-  <div><div id="typewriter-container">
-    <p class="typewriter-pure" id="texto-Apoio" ></p>
-  </div>
-
-   
-</div>
-
-
-  <script >
-    "use strict";
-const dadosPerguntas = [
+const dadosPerguntas: Perfil[] = [
     {
         "Carimbo de data/hora": "05/07/2025 12:59:46",
         "Nome completo:": "Raira Reis Silva",
@@ -705,30 +557,91 @@ const camposEmOrdem = [
 const introducao = "Sistema de invasão iniciado...\n Local: Instituto Federal do Piauí (IFPI)\n Objetivo: Acesso completo ao sistema interno.\n Eu sou ..........................., uma mente brilhante nas artes da infiltração digital. Meu alvo? O coração tecnológico do IFPI.\n Mas antes de alcançar os servidores centrais, há um obstáculo inesperado: um sistema de segurança baseado em...\n curiosidades sobre os alunos da turma de ADS?\n Sim, isso mesmo. Alguém achou que seria divertido proteger dados confidenciais com um quiz. Cada pergunta é uma barreira, cada resposta certa \nme aproxima do núcleo. Não é sobre conhecer a turma — é sobre superar o desafio.\n Errar significa ser detectado.\n Acertar significa avançar. Se conseguir pontuação superior a 6... eu finalmente terei acesso a todos os mistérios e segredos tão bem guardados! Você está pronto para me ajudar a quebrar esse sistema? Então vamos decifrar essas curiosidades e abrir caminho até o objetivo final.\n A missão começa agora!!! ";
 const creditos = "CRÉDITOS\n\n Desenvolvimento e Direção Criativa\n Roger Pierre Reis Silva \nFrancisco de Cássio Sales Sampaio \nRaira Reis Silva\n\n Testes e Feedback \nAmigos, família e corajosos jogadores beta. \nObrigado por cada bug encontrado e cada elogio sincero! \n\nAgradecimentos Especiais \n- Ao IFPI – Instituto Federal do Piauí, por ser berço de ideias, aprendizado e inspiração \n- Aos que acreditaram no projeto desde o início \n- E a você, jogador, por embarcar nessa jornada! \n\nFeito com paixão no Brasil 🇧🇷\n© 2025 Roger Pierre Reis Silva, Francisco de Cássio Sales Sampaio, Raira Reis Silva. Todos os direitos reservados.";
 
-let header2 = document.getElementById("sub-titulo");
-let textoApoio = document.getElementById("texto-Apoio");
-let marcadorDEvida = document.getElementById("marcador-de-pontuação");
-let button1 = document.getElementById("primeira-opcao");
-let button2 = document.getElementById("segunda-opcao");
-let button3 = document.getElementById("terceira-opcao");
-let button4 = document.getElementById("quarta-opcao");
-let perdeu = false;
+function getElement<T extends HTMLElement>(id: string): T {
+    const element = document.getElementById(id);
+    if (!element) {
+        throw new Error(`Elemento não encontrado: ${id}`);
+    }
+    return element as T;
+}
+
+// DOM elements (initialized once the DOM is ready)
+let header2!: HTMLElement;
+let marcadorDEvida!: HTMLElement;
+let button1!: HTMLButtonElement;
+let button2!: HTMLButtonElement;
+let button3!: HTMLButtonElement;
+let button4!: HTMLButtonElement;
+
 let comecar = false;
-let texto = "";
 let i = 0;
 let pontuacao = 0;
-let corretas = [];
-let respostas;
-let alternativas = [true, true, true, true];
+let corretas: number[] = [];
+let respostas: number[] = [];
+let alternativas: boolean[] = [true, true, true, true];
 let perfilEscolhido = 0;
-let jogou = false;
-let indicePerfil;
-let perfil;
 //verificação de abas;
 let introducaoAberta = false;
 let credotosAberta = false;
-let dadosAberta = false;
-function digitarTextoComCursor(texto, containerId, velocidade = 50) {
+
+export function initGame() {
+    header2 = getElement("sub-titulo");
+    marcadorDEvida = getElement("marcador-de-pontuação");
+    button1 = getElement("primeira-opcao");
+    button2 = getElement("segunda-opcao");
+    button3 = getElement("terceira-opcao");
+    button4 = getElement("quarta-opcao");
+
+    button1.addEventListener("click", () => {
+        if (comecar) {
+            confirmarAlternativa(0);
+            iniciar();
+        }
+        else {
+            comecar = true;
+            iniciar();
+        }
+    });
+
+    button2.addEventListener("click", () => {
+        if (comecar) {
+            confirmarAlternativa(1);
+            iniciar();
+        }
+        else {
+            mostrarInstrucoes();
+        }
+    });
+
+    button3.addEventListener("click", () => {
+        if (comecar) {
+            confirmarAlternativa(2);
+            iniciar();
+        }
+        else {
+            mostrarCreditos();
+        }
+    });
+
+    button4.addEventListener("click", () => {
+        if (comecar) {
+            confirmarAlternativa(3);
+            iniciar();
+        }
+        else {
+            mostrarBarraDePesquisa(dadosPerguntas);
+        }
+    });
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGame);
+}
+else {
+    initGame();
+}
+
+function digitarTextoComCursor(texto: string, containerId: string, velocidade = 50) {
     const container = document.getElementById(containerId);
     if (!container)
         return;
@@ -748,15 +661,15 @@ function digitarTextoComCursor(texto, containerId, velocidade = 50) {
         index++;
     }, velocidade);
 }
-function embaralharArray(array) {
-    const copia = array; // Faz uma cópia para não modificar o original
+function embaralharArray<T>(array: T[]): T[] {
+    const copia = [...array]; // Faz uma cópia para não modificar o original
     for (let i = copia.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1)); // Índice aleatório entre 0 e i
         [copia[i], copia[j]] = [copia[j], copia[i]]; // Troca os elementos
     }
     return copia;
 }
-function acharAlternativaPeloCampo(campo, pessoa) {
+function acharAlternativaPeloCampo(campo: string, pessoa: number) {
     let perfil = dadosPerguntas[pessoa];
     if (!perfil) {
         return "Pessoa não encontrada";
@@ -796,16 +709,16 @@ function acharAlternativaPeloCampo(campo, pessoa) {
     }
     return "Campo inválido";
 }
-function extrairPrimeiroNome(nomeCompleto) {
+function extrairPrimeiroNome(nomeCompleto: string) {
     // Remove espaços extras e divide a string pelo espaço
     const partes = nomeCompleto.trim().split(" ");
     return partes[0];
 }
-function extrairSobrenome(nomeCompleto) {
+function extrairSobrenome(nomeCompleto: string) {
     const partes = nomeCompleto.trim().split(" ");
     return partes.length > 1 ? partes[partes.length - 1] : "";
 }
-function sortearPerfis(correta, i) {
+function sortearPerfis(correta: number, i: number) {
     let respostas = [];
     let usados = [correta]; // já marca a correta como usada
     while (respostas.length < 3) {
@@ -832,7 +745,7 @@ function sortearPerfis(correta, i) {
     embaralharArray(respostas);
     return respostas;
 }
-function transformarEmBooleano(array) {
+function transformarEmBooleano(array: number[]): boolean[] {
     let arrayDEbooleanos = [];
     for (let element of array) {
         if (acharAlternativaPeloCampo(camposEmOrdem[i], element) == acharAlternativaPeloCampo(camposEmOrdem[i], corretas[i])) {
@@ -872,7 +785,6 @@ function vencer() {
         button4.style.display = "none";
         digitarTextoComCursor("aperte (ctrl+r)","typewriter-container",40);
         marcadorDEvida.innerHTML="Pontuação "+pontuacao+"\naperte ctrl+r para reiniciar."
-        perdeu = true;
     }
     else {
         header2.innerHTML = "VOCE FOI DESCOBERTO.";
@@ -882,8 +794,6 @@ function vencer() {
         button4.style.display = "none";
         digitarTextoComCursor("aperte (ctrl+r)","typewriter-container",40);
         marcadorDEvida.innerHTML="Pontuação "+pontuacao;
-
-        perdeu = true;
     }
 }
 function mostrarPerguntasEAlternativas() {
@@ -904,8 +814,6 @@ function iniciar() {
     let n = 0;
     if (n == 0) {
         credotosAberta = true;
-        dadosAberta = false;
-        ;
         introducaoAberta = true;
         mostrarCreditos();
         mostrarInstrucoes();
@@ -932,7 +840,7 @@ function mostrarCreditos() {
         digitarTextoComCursor("", "typewriter-container", 40);
     }
 }
-function confirmarAlternativa(alternativa) {
+function confirmarAlternativa(alternativa: number) {
     mostrarPerguntasEAlternativas();
     if (alternativas[alternativa] && pontuacao <= 10) {
         digitarTextoComCursor("voce acertou", "typewriter-container", 40);
@@ -947,7 +855,7 @@ function confirmarAlternativa(alternativa) {
     i++;
     console.log(i);
 }
-function mostrarBarraDePesquisa(dadosPerguntas) {
+function mostrarBarraDePesquisa(dadosPerguntas: Perfil[]) {
     // Remove barra antiga, se existir
     const barraExistente = document.getElementById("barra-pesquisa");
     if (barraExistente) {
@@ -966,12 +874,12 @@ function mostrarBarraDePesquisa(dadosPerguntas) {
     listaResultados.id = "resultados-pesquisa";
     document.body.appendChild(listaResultados);
     // Função auxiliar para atualizar lista
-    function atualizarLista(filtro) {
+    function atualizarLista(filtro: string) {
         listaResultados.innerHTML = "";
         if (!filtro.trim())
             return;
-        const resultados = dadosPerguntas.filter(p => p["Nome completo:"].toLowerCase().includes(filtro.toLowerCase()));
-        resultados.forEach(p => {
+        const resultados = dadosPerguntas.filter((p: Perfil) => p["Nome completo:"].toLowerCase().includes(filtro.toLowerCase()));
+        resultados.forEach((p: Perfil) => {
             const li = document.createElement("li");
             li.textContent = p["Nome completo:"];
             li.style.cursor = "pointer";
@@ -1014,45 +922,5 @@ Chega atrasado: ${perfil["Chega atrasado(a)?"] ? "Sim" : "Não"}
             }
         }
     });
-} //feita pelo chatgpt;
-button1.addEventListener("click", (ev) => {
-    if (comecar) {
-        confirmarAlternativa(0);
-        iniciar();
-    }
-    else {
-        comecar = true;
-        iniciar();
-    }
-});
-button2.addEventListener("click", (ev) => {
-    if (comecar) {
-        confirmarAlternativa(1);
-        iniciar();
-    }
-    else {
-        mostrarInstrucoes();
-    }
-});
-button3.addEventListener("click", (ev) => {
-    if (comecar) {
-        confirmarAlternativa(2);
-        iniciar();
-    }
-    else {
-        mostrarCreditos();
-    }
-});
-button4.addEventListener("click", (ev) => {
-    if (comecar) {
-        confirmarAlternativa(3);
-        iniciar();
-    }
-    else {
-        mostrarBarraDePesquisa(dadosPerguntas);
-    }
-});
+} //feita pelo chatgpt; // O registro de eventos é feito em initGame() após o DOM estar pronto.
 
-  </script>
-</body>
-</html>
