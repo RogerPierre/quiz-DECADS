@@ -1,8 +1,13 @@
 
+import  { useEffect } from 'react'
 import './App.css'
 import bgVideo from './assets/video-fundo.mp4'
+import { initGame } from './assets/logics/game'
 
 function App() {
+  useEffect(() => {
+    initGame();
+  }, []);
     
   return (
     <>

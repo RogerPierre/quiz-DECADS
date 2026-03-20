@@ -634,13 +634,6 @@ export function initGame() {
     });
 }
 
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initGame);
-}
-else {
-    initGame();
-}
-
 function digitarTextoComCursor(texto: string, containerId: string, velocidade = 50) {
     const container = document.getElementById(containerId);
     if (!container)
